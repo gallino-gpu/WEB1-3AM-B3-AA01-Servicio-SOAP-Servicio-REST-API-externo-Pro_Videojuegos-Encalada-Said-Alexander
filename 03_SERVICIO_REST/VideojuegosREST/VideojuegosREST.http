@@ -1,0 +1,6 @@
+@VideojuegosREST_HostAddress = http://localhost:5192
+
+GET {{VideojuegosREST_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

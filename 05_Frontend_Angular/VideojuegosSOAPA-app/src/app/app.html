@@ -1,0 +1,2022 @@
+<div class="aplicacion-matrix">
+
+  <!-- FONDO DECORATIVO MATRIX -->
+
+  <div class="matrix-fondo" aria-hidden="true">
+    <span>01001101</span>
+    <span>10110010</span>
+    <span>00110101</span>
+    <span>11001010</span>
+    <span>01101100</span>
+    <span>10010111</span>
+    <span>00101101</span>
+    <span>11010100</span>
+  </div>
+
+  <!-- NAVEGACIÓN PRINCIPAL -->
+
+  <header class="barra-principal">
+    <div class="container barra-contenido">
+
+      <button
+        type="button"
+        class="marca-sistema"
+        (click)="cambiarVista('inicio')"
+      >
+        <span class="marca-icono">🎮</span>
+
+        <span>
+          <strong>GAME<span>CORE</span></strong>
+          <small>Inventory System</small>
+        </span>
+      </button>
+
+      <nav class="menu-principal">
+
+        <button
+          type="button"
+          [class.activo]="vistaActual === 'inicio'"
+          (click)="cambiarVista('inicio')"
+        >
+          Inicio
+        </button>
+
+        <button
+          type="button"
+          [class.activo]="vistaActual === 'soap'"
+          (click)="cambiarVista('soap')"
+        >
+          Productos SOAP
+        </button>
+
+        <button
+          type="button"
+          [class.activo]="vistaActual === 'rest'"
+          (click)="cambiarVista('rest')"
+        >
+          Inventario REST
+        </button>
+
+        <button
+          type="button"
+          [class.activo]="vistaActual === 'externa'"
+          (click)="cambiarVista('externa')"
+        >
+          API externa
+        </button>
+
+      </nav>
+
+      <div class="estado-sistema">
+        <span></span>
+        Sistema activo
+      </div>
+
+    </div>
+  </header>
+
+  <main class="container contenido-aplicacion">
+
+    <!-- ================================================= -->
+    <!-- PÁGINA PRINCIPAL -->
+    <!-- ================================================= -->
+
+    <section
+      *ngIf="vistaActual === 'inicio'"
+      class="vista-inicio"
+    >
+
+      <div class="hero-matrix">
+
+        <div class="hero-contenido">
+
+          <p class="linea-terminal">
+            <span>root&#64;gamecore</span>:~$
+            iniciar_sistema
+          </p>
+
+          <div class="hero-etiqueta">
+            PLATAFORMA DE INTEGRACIÓN
+          </div>
+
+          <h1>
+            CONTROL TOTAL DEL
+            <span>INVENTARIO GAMER</span>
+          </h1>
+
+          <p class="hero-descripcion">
+            Aplicación Angular integrada con servicios SOAP,
+            REST y una API pública externa para administrar
+            videojuegos y controlar movimientos de stock.
+          </p>
+
+          <div class="hero-acciones">
+
+            <button
+              type="button"
+              class="boton-matrix-principal"
+              (click)="cambiarVista('soap')"
+            >
+              Explorar productos
+              <span>→</span>
+            </button>
+
+            <button
+              type="button"
+              class="boton-matrix-secundario"
+              (click)="cambiarVista('rest')"
+            >
+              Controlar inventario
+            </button>
+
+          </div>
+
+        </div>
+
+        <div class="nucleo-sistema">
+          <div class="nucleo-circulo circulo-uno"></div>
+          <div class="nucleo-circulo circulo-dos"></div>
+          <div class="nucleo-circulo circulo-tres"></div>
+
+          <div class="nucleo-centro">
+            <span>🎮</span>
+            <strong>ONLINE</strong>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- INDICADORES -->
+
+      <div class="row g-3 indicadores-inicio">
+
+        <div class="col-6 col-lg-3">
+          <div class="indicador-matrix">
+            <span class="indicador-icono">🎮</span>
+
+            <div>
+              <small>Videojuegos</small>
+              <strong>{{ totalProductos() }}</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-6 col-lg-3">
+          <div class="indicador-matrix">
+            <span class="indicador-icono">📦</span>
+
+            <div>
+              <small>Stock total</small>
+              <strong>{{ totalStock() }}</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-6 col-lg-3">
+          <div class="indicador-matrix">
+            <span class="indicador-icono entrada">↗</span>
+
+            <div>
+              <small>Entradas</small>
+              <strong>{{ totalEntradas() }}</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-6 col-lg-3">
+          <div class="indicador-matrix">
+            <span class="indicador-icono salida">↘</span>
+
+            <div>
+              <small>Salidas</small>
+              <strong>{{ totalSalidas() }}</strong>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- MÓDULOS PRINCIPALES -->
+
+      <div class="titulo-modulos">
+        <div>
+          <p>// SELECCIONAR MÓDULO</p>
+          <h2>Centro de operaciones</h2>
+        </div>
+
+        <span>03 módulos disponibles</span>
+      </div>
+
+      <div class="row g-4 tarjetas-modulos">
+
+        <!-- SOAP -->
+
+        <div class="col-md-6 col-xl-4">
+          <article class="tarjeta-modulo tarjeta-soap">
+
+            <div class="modulo-superior">
+              <span class="numero-modulo">01</span>
+              <span class="tecnologia soap">SOAP</span>
+            </div>
+
+            <div class="modulo-icono">🎮</div>
+
+            <h3>Catálogo de videojuegos</h3>
+
+            <p>
+              Administra categorías y productos mediante
+              el servicio ProductoService.svc.
+            </p>
+
+            <ul>
+              <li>Consultar videojuegos</li>
+              <li>Agregar y actualizar productos</li>
+              <li>Filtrar y eliminar registros</li>
+            </ul>
+
+            <button
+              type="button"
+              (click)="cambiarVista('soap')"
+            >
+              Acceder al módulo
+              <span>→</span>
+            </button>
+
+          </article>
+        </div>
+
+        <!-- REST -->
+
+        <div class="col-md-6 col-xl-4">
+          <article class="tarjeta-modulo tarjeta-rest">
+
+            <div class="modulo-superior">
+              <span class="numero-modulo">02</span>
+              <span class="tecnologia rest">REST</span>
+            </div>
+
+            <div class="modulo-icono">📊</div>
+
+            <h3>Movimientos de inventario</h3>
+
+            <p>
+              Controla las entradas y salidas del stock
+              mediante la API VideojuegosREST.
+            </p>
+
+            <ul>
+              <li>Registrar entradas y salidas</li>
+              <li>Actualizar movimientos</li>
+              <li>Borrar y recalcular el stock</li>
+            </ul>
+
+            <button
+              type="button"
+              (click)="cambiarVista('rest')"
+            >
+              Acceder al módulo
+              <span>→</span>
+            </button>
+
+          </article>
+        </div>
+
+        <!-- API EXTERNA -->
+
+        <div class="col-md-6 col-xl-4">
+          <article class="tarjeta-modulo tarjeta-externa">
+
+            <div class="modulo-superior">
+              <span class="numero-modulo">03</span>
+              <span class="tecnologia externa">
+                API PÚBLICA
+              </span>
+            </div>
+
+            <div class="modulo-icono">🌐</div>
+
+            <h3>Ofertas internacionales</h3>
+
+            <p>
+              Consulta un catálogo externo de videojuegos,
+              precios y descuentos.
+            </p>
+
+            <ul>
+              <li>Datos obtenidos en tiempo real</li>
+              <li>Imágenes y precios externos</li>
+              <li>Búsqueda pública de videojuegos</li>
+            </ul>
+
+            <button
+              type="button"
+              (click)="cambiarVista('externa')"
+            >
+              Acceder al módulo
+              <span>→</span>
+            </button>
+
+          </article>
+        </div>
+
+      </div>
+
+      <!-- FLUJO DE INTEGRACIÓN -->
+
+      <div class="flujo-integracion">
+
+        <div class="flujo-titulo">
+          <p>// ARQUITECTURA DEL SISTEMA</p>
+          <h2>Integración funcional</h2>
+        </div>
+
+        <div class="flujo-elementos">
+
+          <div class="flujo-item">
+            <span>🖥️</span>
+            <strong>Angular</strong>
+            <small>Interfaz principal</small>
+          </div>
+
+          <div class="flujo-linea">
+            <span></span>
+            <small>HTTP</small>
+          </div>
+
+          <div class="flujo-servicios">
+
+            <div class="flujo-item">
+              <span>🧩</span>
+              <strong>SOAP</strong>
+              <small>Productos</small>
+            </div>
+
+            <div class="flujo-item">
+              <span>⚡</span>
+              <strong>REST</strong>
+              <small>Inventario</small>
+            </div>
+
+            <div class="flujo-item">
+              <span>🌐</span>
+              <strong>API externa</strong>
+              <small>Catálogo público</small>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ================================================= -->
+    <!-- MÓDULO SOAP -->
+    <!-- ================================================= -->
+
+    <section
+      *ngIf="vistaActual === 'soap'"
+      class="vista-modulo"
+    >
+
+      <div class="cabecera-vista">
+
+        <button
+          type="button"
+          class="boton-volver"
+          (click)="volverInicio()"
+        >
+          ← Volver al inicio
+        </button>
+
+        <div class="cabecera-vista-contenido">
+          <div>
+            <p class="ruta-sistema">
+              GAMECORE / SERVICIOS / SOAP
+            </p>
+
+            <h1>Catálogo de videojuegos</h1>
+
+            <p>
+              Administración de categorías y productos
+              mediante CoreWCF y mensajes XML.
+            </p>
+          </div>
+
+          <span class="sello-servicio soap">SOAP</span>
+        </div>
+
+      </div>
+
+      <div class="row g-3 resumen-modulo">
+
+        <div class="col-md-4">
+          <div class="tarjeta-resumen">
+            <span class="icono-resumen azul">🎮</span>
+            <div>
+              <p>Productos mostrados</p>
+              <h2>{{ totalProductos() }}</h2>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="tarjeta-resumen">
+            <span class="icono-resumen morado">📦</span>
+            <div>
+              <p>Stock disponible</p>
+              <h2>{{ totalStock() }}</h2>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="tarjeta-resumen">
+            <span class="icono-resumen azul">🗂️</span>
+            <div>
+              <p>Categorías</p>
+              <h2>{{ categorias.length }}</h2>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="row g-4 mt-1">
+
+        <!-- FORMULARIO PRODUCTOS -->
+
+        <div class="col-lg-4">
+          <div
+            id="formulario-producto"
+            class="panel formulario-panel"
+          >
+
+            <div class="titulo-panel">
+              <div>
+                <p class="mini-etiqueta">
+                  {{
+                    modoEdicion
+                      ? 'EDITANDO PRODUCTO'
+                      : 'NUEVO REGISTRO'
+                  }}
+                </p>
+
+                <h3>
+                  {{
+                    modoEdicion
+                      ? 'Actualizar producto'
+                      : 'Agregar producto'
+                  }}
+                </h3>
+              </div>
+
+              <span class="icono-panel">
+                {{ modoEdicion ? '✏️' : '＋' }}
+              </span>
+            </div>
+
+            <form (ngSubmit)="guardarProducto()">
+
+              <div class="mb-3">
+                <label class="form-label">
+                  Nombre del videojuego
+                </label>
+
+                <input
+                  type="text"
+                  class="form-control"
+                  name="nombre"
+                  [(ngModel)]="productoFormulario.nombre"
+                  placeholder="Ejemplo: Minecraft"
+                  maxlength="150"
+                  required
+                >
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">
+                  Descripción
+                </label>
+
+                <textarea
+                  class="form-control"
+                  name="descripcion"
+                  [(ngModel)]="
+                    productoFormulario.descripcion
+                  "
+                  rows="3"
+                  maxlength="300"
+                  placeholder="Descripción del videojuego"
+                  required
+                ></textarea>
+              </div>
+
+              <div class="row g-3">
+
+                <div class="col-6">
+                  <label class="form-label">Precio</label>
+
+                  <input
+                    type="number"
+                    class="form-control"
+                    name="precio"
+                    [(ngModel)]="productoFormulario.precio"
+                    min="0"
+                    step="0.01"
+                    required
+                  >
+                </div>
+
+                <div class="col-6">
+                  <label class="form-label">Stock</label>
+
+                  <input
+                    type="number"
+                    class="form-control"
+                    name="stock"
+                    [(ngModel)]="productoFormulario.stock"
+                    min="0"
+                    required
+                  >
+                </div>
+
+              </div>
+
+              <div class="mt-3">
+                <label class="form-label">Categoría</label>
+
+                <select
+                  class="form-select"
+                  name="idCategoria"
+                  [(ngModel)]="
+                    productoFormulario.idCategoria
+                  "
+                  required
+                >
+                  <option [ngValue]="0">
+                    Selecciona una categoría
+                  </option>
+
+                  <option
+                    *ngFor="let categoria of categorias"
+                    [ngValue]="categoria.idCategoria"
+                  >
+                    {{ categoria.nombre }}
+                  </option>
+                </select>
+              </div>
+
+              <div class="form-check form-switch my-4">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="estado"
+                  name="estado"
+                  [(ngModel)]="productoFormulario.estado"
+                >
+
+                <label
+                  class="form-check-label"
+                  for="estado"
+                >
+                  Producto activo
+                </label>
+              </div>
+
+              <button
+                type="submit"
+                class="btn boton-principal w-100"
+              >
+                {{
+                  modoEdicion
+                    ? 'Guardar cambios'
+                    : 'Agregar producto'
+                }}
+              </button>
+
+              <button
+                *ngIf="modoEdicion"
+                type="button"
+                class="btn btn-outline-secondary w-100 mt-2"
+                (click)="cancelarEdicion()"
+              >
+                Cancelar edición
+              </button>
+
+            </form>
+          </div>
+        </div>
+
+        <!-- PRODUCTOS Y FILTROS -->
+
+        <div class="col-lg-8">
+
+          <div class="panel filtros-panel">
+
+            <div class="titulo-filtros">
+              <div>
+                <p class="mini-etiqueta">BÚSQUEDA SOAP</p>
+                <h3>Filtros de productos</h3>
+              </div>
+
+              <button
+                type="button"
+                class="btn btn-sm btn-outline-secondary"
+                (click)="limpiarFiltros()"
+              >
+                Limpiar filtros
+              </button>
+            </div>
+
+            <div class="row g-3 align-items-end">
+
+              <div class="col-md-5">
+                <label class="form-label">
+                  Filtrar por categoría
+                </label>
+
+                <select
+                  class="form-select"
+                  [(ngModel)]="filtroCategoria"
+                  (change)="filtrarPorCategoria()"
+                >
+                  <option [ngValue]="0">
+                    Todas las categorías
+                  </option>
+
+                  <option
+                    *ngFor="let categoria of categorias"
+                    [ngValue]="categoria.idCategoria"
+                  >
+                    {{ categoria.nombre }}
+                  </option>
+                </select>
+              </div>
+
+              <div class="col-6 col-md-2">
+                <label class="form-label">Mínimo</label>
+
+                <input
+                  type="number"
+                  class="form-control"
+                  [(ngModel)]="precioMinimo"
+                  placeholder="$0"
+                  min="0"
+                >
+              </div>
+
+              <div class="col-6 col-md-2">
+                <label class="form-label">Máximo</label>
+
+                <input
+                  type="number"
+                  class="form-control"
+                  [(ngModel)]="precioMaximo"
+                  placeholder="$100"
+                  min="0"
+                >
+              </div>
+
+              <div class="col-md-3">
+                <button
+                  type="button"
+                  class="btn boton-secundario w-100"
+                  (click)="filtrarPorPrecio()"
+                >
+                  Buscar
+                </button>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="panel tabla-panel mt-4">
+
+            <div class="titulo-tabla">
+              <div>
+                <p class="mini-etiqueta">INVENTARIO SOAP</p>
+                <h3>Lista de videojuegos</h3>
+              </div>
+
+              <button
+                type="button"
+                class="btn btn-sm btn-outline-primary"
+                (click)="cargarProductos()"
+              >
+                Actualizar
+              </button>
+            </div>
+
+            <div
+              *ngIf="cargando"
+              class="estado-carga"
+            >
+              <div
+                class="spinner-border"
+                role="status"
+              ></div>
+
+              <p>Cargando productos...</p>
+            </div>
+
+            <div
+              *ngIf="!cargando && productos.length === 0"
+              class="estado-vacio"
+            >
+              <span>🎮</span>
+              <h4>No se encontraron productos</h4>
+              <p>Prueba con otros filtros.</p>
+            </div>
+
+            <div
+              *ngIf="!cargando && productos.length > 0"
+              class="table-responsive"
+            >
+              <table class="table align-middle">
+                <thead>
+                  <tr>
+                    <th>Videojuego</th>
+                    <th>Categoría</th>
+                    <th>Precio</th>
+                    <th>Stock</th>
+                    <th>Estado</th>
+                    <th class="text-end">Acciones</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <tr *ngFor="let producto of productos">
+
+                    <td>
+                      <div class="producto-info">
+                        <span class="producto-icono">🎮</span>
+
+                        <div>
+                          <strong>{{ producto.nombre }}</strong>
+                          <small>{{ producto.descripcion }}</small>
+                        </div>
+                      </div>
+                    </td>
+
+                    <td>
+                      <span class="categoria-badge">
+                        {{
+                          obtenerNombreCategoria(
+                            producto.idCategoria
+                          )
+                        }}
+                      </span>
+                    </td>
+
+                    <td class="precio">
+                      ${{ producto.precio | number:'1.2-2' }}
+                    </td>
+
+                    <td>
+                      <span
+                        class="stock-badge"
+                        [class.stock-bajo]="
+                          producto.stock <= 5
+                        "
+                      >
+                        {{ producto.stock }}
+                      </span>
+                    </td>
+
+                    <td>
+                      <span
+                        class="estado"
+                        [class.activo]="producto.estado"
+                        [class.inactivo]="!producto.estado"
+                      >
+                        {{
+                          producto.estado
+                            ? 'Activo'
+                            : 'Inactivo'
+                        }}
+                      </span>
+                    </td>
+
+                    <td class="text-end">
+                      <div class="acciones-tabla">
+
+                        <button
+                          type="button"
+                          class="btn btn-sm btn-editar"
+                          (click)="
+                            seleccionarProducto(producto)
+                          "
+                        >
+                          Editar
+                        </button>
+
+                        <button
+                          type="button"
+                          class="btn btn-sm btn-eliminar"
+                          (click)="eliminarProducto(producto)"
+                        >
+                          Eliminar
+                        </button>
+
+                      </div>
+                    </td>
+
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================================================= -->
+    <!-- MÓDULO REST -->
+    <!-- ================================================= -->
+
+    <section
+      *ngIf="vistaActual === 'rest'"
+      class="vista-modulo"
+    >
+
+      <div class="cabecera-vista">
+
+        <button
+          type="button"
+          class="boton-volver"
+          (click)="volverInicio()"
+        >
+          ← Volver al inicio
+        </button>
+
+        <div class="cabecera-vista-contenido">
+          <div>
+            <p class="ruta-sistema">
+              GAMECORE / SERVICIOS / REST
+            </p>
+
+            <h1>Movimientos de inventario</h1>
+
+            <p>
+              Registra entradas y salidas y actualiza
+              automáticamente el stock.
+            </p>
+          </div>
+
+          <span class="sello-servicio rest">REST</span>
+        </div>
+
+      </div>
+
+      <div class="row g-3 resumen-modulo">
+
+        <div class="col-md-4">
+          <div class="tarjeta-resumen">
+            <span class="icono-resumen morado">📊</span>
+            <div>
+              <p>Movimientos</p>
+              <h2>{{ movimientos.length }}</h2>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="tarjeta-resumen">
+            <span class="icono-resumen entrada">↗</span>
+            <div>
+              <p>Unidades ingresadas</p>
+              <h2>{{ totalEntradas() }}</h2>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="tarjeta-resumen">
+            <span class="icono-resumen salida">↘</span>
+            <div>
+              <p>Unidades retiradas</p>
+              <h2>{{ totalSalidas() }}</h2>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="row g-4 mt-1">
+
+        <!-- FORMULARIO MOVIMIENTO -->
+
+        <div class="col-lg-4">
+          <div
+            id="formulario-movimiento"
+            class="panel formulario-panel"
+          >
+
+            <div class="titulo-panel">
+              <div>
+                <p class="mini-etiqueta">
+                  {{
+                    modoEdicionMovimiento
+                      ? 'EDITANDO MOVIMIENTO'
+                      : 'CONTROL DE STOCK'
+                  }}
+                </p>
+
+                <h3>
+                  {{
+                    modoEdicionMovimiento
+                      ? 'Actualizar movimiento'
+                      : 'Registrar movimiento'
+                  }}
+                </h3>
+              </div>
+
+              <span class="icono-panel">
+                {{
+                  modoEdicionMovimiento
+                    ? '✏️'
+                    : '📦'
+                }}
+              </span>
+            </div>
+
+            <form (ngSubmit)="guardarMovimiento()">
+
+              <div class="mb-3">
+                <label class="form-label">Producto</label>
+
+                <select
+                  class="form-select"
+                  name="movimientoIdProducto"
+                  [(ngModel)]="
+                    movimientoFormulario.idProducto
+                  "
+                  required
+                >
+                  <option [ngValue]="0">
+                    Selecciona un producto
+                  </option>
+
+                  <option
+                    *ngFor="
+                      let producto of productosDisponibles
+                    "
+                    [ngValue]="producto.idProducto"
+                  >
+                    {{ producto.nombre }}
+                    · Stock: {{ producto.stock }}
+                  </option>
+                </select>
+              </div>
+
+              <div
+                *ngIf="
+                  obtenerStockProductoSeleccionado() !== null
+                "
+                class="stock-seleccionado"
+              >
+                <span>Stock disponible</span>
+
+                <strong>
+                  {{ obtenerStockProductoSeleccionado() }}
+                  unidades
+                </strong>
+              </div>
+
+              <div class="mb-3 mt-3">
+                <label class="form-label">
+                  Tipo de movimiento
+                </label>
+
+                <div class="selector-movimiento">
+
+                  <label
+                    class="opcion-movimiento entrada"
+                    [class.seleccionado]="
+                      movimientoFormulario.tipoMovimiento
+                        === 'ENTRADA'
+                    "
+                  >
+                    <input
+                      type="radio"
+                      name="tipoMovimiento"
+                      value="ENTRADA"
+                      [(ngModel)]="
+                        movimientoFormulario.tipoMovimiento
+                      "
+                    >
+
+                    <span class="opcion-icono">↗</span>
+
+                    <span>
+                      <strong>Entrada</strong>
+                      <small>Aumenta el stock</small>
+                    </span>
+                  </label>
+
+                  <label
+                    class="opcion-movimiento salida"
+                    [class.seleccionado]="
+                      movimientoFormulario.tipoMovimiento
+                        === 'SALIDA'
+                    "
+                  >
+                    <input
+                      type="radio"
+                      name="tipoMovimiento"
+                      value="SALIDA"
+                      [(ngModel)]="
+                        movimientoFormulario.tipoMovimiento
+                      "
+                    >
+
+                    <span class="opcion-icono">↘</span>
+
+                    <span>
+                      <strong>Salida</strong>
+                      <small>Disminuye el stock</small>
+                    </span>
+                  </label>
+
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Cantidad</label>
+
+                <input
+                  type="number"
+                  class="form-control"
+                  name="cantidadMovimiento"
+                  [(ngModel)]="
+                    movimientoFormulario.cantidad
+                  "
+                  min="1"
+                  step="1"
+                  required
+                >
+              </div>
+
+              <div class="mb-4">
+                <label class="form-label">Observación</label>
+
+                <textarea
+                  class="form-control"
+                  name="observacionMovimiento"
+                  [(ngModel)]="
+                    movimientoFormulario.observacion
+                  "
+                  rows="3"
+                  maxlength="500"
+                  placeholder="Detalle del movimiento"
+                ></textarea>
+              </div>
+
+              <button
+                type="submit"
+                class="btn boton-principal w-100"
+              >
+                {{
+                  modoEdicionMovimiento
+                    ? 'Actualizar movimiento'
+                    : (
+                        movimientoFormulario.tipoMovimiento
+                          === 'ENTRADA'
+                            ? 'Registrar entrada'
+                            : 'Registrar salida'
+                      )
+                }}
+              </button>
+
+              <button
+                *ngIf="modoEdicionMovimiento"
+                type="button"
+                class="btn btn-outline-secondary w-100 mt-2"
+                (click)="cancelarEdicionMovimiento()"
+              >
+                Cancelar edición
+              </button>
+
+            </form>
+          </div>
+        </div>
+
+        <!-- HISTORIAL REST -->
+
+        <div class="col-lg-8">
+          <div class="panel tabla-panel historial-panel">
+
+            <div class="titulo-tabla">
+              <div>
+                <p class="mini-etiqueta">HISTORIAL REST</p>
+                <h3>Registro de movimientos</h3>
+              </div>
+
+              <button
+                type="button"
+                class="btn btn-sm btn-outline-primary"
+                (click)="cargarMovimientos()"
+              >
+                Actualizar
+              </button>
+            </div>
+
+            <div
+              *ngIf="cargandoMovimientos"
+              class="estado-carga"
+            >
+              <div
+                class="spinner-border"
+                role="status"
+              ></div>
+
+              <p>Cargando movimientos...</p>
+            </div>
+
+            <div
+              *ngIf="
+                !cargandoMovimientos &&
+                movimientos.length === 0
+              "
+              class="estado-vacio"
+            >
+              <span>📊</span>
+              <h4>No existen movimientos</h4>
+              <p>Registra la primera entrada o salida.</p>
+            </div>
+
+            <div
+              *ngIf="
+                !cargandoMovimientos &&
+                movimientos.length > 0
+              "
+              class="table-responsive"
+            >
+              <table class="table tabla-movimientos">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Producto</th>
+                    <th>Movimiento</th>
+                    <th>Cantidad</th>
+                    <th>Fecha</th>
+                    <th>Observación</th>
+                    <th class="text-end">Acciones</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <tr
+                    *ngFor="let movimiento of movimientos"
+                  >
+
+                    <td>
+                      <span class="id-movimiento">
+                        #{{ movimiento.idMovimiento }}
+                      </span>
+                    </td>
+
+                    <td>
+                      <div class="producto-movimiento">
+                        <span>🎮</span>
+
+                        <div>
+                          <strong>
+                            {{ movimiento.nombreProducto }}
+                          </strong>
+
+                          <small>
+                            Producto
+                            #{{ movimiento.idProducto }}
+                          </small>
+                        </div>
+                      </div>
+                    </td>
+
+                    <td>
+                      <span
+                        class="tipo-movimiento"
+                        [class.tipo-entrada]="
+                          movimiento.tipoMovimiento
+                            === 'ENTRADA'
+                        "
+                        [class.tipo-salida]="
+                          movimiento.tipoMovimiento
+                            === 'SALIDA'
+                        "
+                      >
+                        {{
+                          movimiento.tipoMovimiento
+                            === 'ENTRADA'
+                              ? '↗ Entrada'
+                              : '↘ Salida'
+                        }}
+                      </span>
+                    </td>
+
+                    <td>
+                      <strong class="cantidad-movimiento">
+                        {{ movimiento.cantidad }}
+                      </strong>
+                    </td>
+
+                    <td>
+                      <span class="fecha-movimiento">
+                        {{
+                          movimiento.fechaMovimiento
+                            | date:'dd/MM/yyyy'
+                        }}
+                      </span>
+
+                      <small class="hora-movimiento">
+                        {{
+                          movimiento.fechaMovimiento
+                            | date:'HH:mm'
+                        }}
+                      </small>
+                    </td>
+
+                    <td>
+                      <span class="observacion-movimiento">
+                        {{
+                          movimiento.observacion
+                            || 'Sin observación'
+                        }}
+                      </span>
+                    </td>
+
+                    <td class="text-end">
+                      <div class="acciones-tabla">
+
+                        <button
+                          type="button"
+                          class="btn btn-sm btn-editar"
+                          (click)="
+                            seleccionarMovimiento(movimiento)
+                          "
+                        >
+                          Editar
+                        </button>
+
+                        <button
+                          type="button"
+                          class="btn btn-sm btn-eliminar"
+                          (click)="
+                            eliminarMovimiento(movimiento)
+                          "
+                        >
+                          Borrar
+                        </button>
+
+                      </div>
+                    </td>
+
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================================================= -->
+    <!-- API EXTERNA - CHEAPSHARK -->
+    <!-- ================================================= -->
+
+    <section
+      *ngIf="vistaActual === 'externa'"
+      class="vista-modulo vista-externa"
+    >
+
+      <div class="cabecera-vista">
+
+        <button
+          type="button"
+          class="boton-volver"
+          (click)="volverInicio()"
+        >
+          ← Volver al inicio
+        </button>
+
+        <div class="cabecera-vista-contenido">
+          <div>
+            <p class="ruta-sistema">
+              GAMECORE / INTEGRACIONES / API EXTERNA
+            </p>
+
+            <h1>Catálogo externo de videojuegos</h1>
+
+            <p>
+              Consulta ofertas públicas de videojuegos
+              obtenidas directamente desde CheapShark.
+            </p>
+          </div>
+
+          <span class="sello-servicio externa">
+            API
+          </span>
+        </div>
+
+      </div>
+
+      <!-- INFORMACIÓN DE LA INTEGRACIÓN -->
+
+      <div class="panel api-informacion mb-4">
+        <div class="api-indicador">
+          <span class="api-punto"></span>
+
+          <div>
+            <strong>API externa conectada</strong>
+
+            <small>
+              Los siguientes datos no pertenecen a la
+              base de datos local.
+            </small>
+          </div>
+        </div>
+
+        <a
+          href="https://apidocs.cheapshark.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="enlace-documentacion"
+        >
+          Ver documentación ↗
+        </a>
+      </div>
+
+      <!-- BUSCADOR -->
+
+      <form
+        class="panel buscador-api mb-4"
+        (ngSubmit)="buscarCatalogoExterno()"
+      >
+        <div class="buscador-api-contenido">
+          <div class="campo-busqueda-api">
+            <label for="busquedaExterna">
+              Buscar videojuego
+            </label>
+
+            <div class="entrada-busqueda-api">
+              <span>⌕</span>
+
+              <input
+                id="busquedaExterna"
+                type="text"
+                class="form-control"
+                name="busquedaExterna"
+                [(ngModel)]="busquedaExterna"
+                placeholder="Ejemplo: Batman, Resident Evil..."
+                autocomplete="off"
+              >
+            </div>
+          </div>
+
+          <div class="acciones-busqueda-api">
+            <button
+              type="submit"
+              class="boton-principal"
+              [disabled]="cargandoExterna"
+            >
+              {{
+                cargandoExterna
+                  ? 'CONSULTANDO...'
+                  : 'BUSCAR OFERTAS'
+              }}
+            </button>
+
+            <button
+              type="button"
+              class="boton-secundario"
+              [disabled]="cargandoExterna"
+              (click)="limpiarBusquedaExterna()"
+            >
+              LIMPIAR
+            </button>
+          </div>
+        </div>
+      </form>
+
+      <!-- ESTADO DE CARGA -->
+
+      <div
+        *ngIf="cargandoExterna"
+        class="panel estado-api"
+      >
+        <div
+          class="spinner-border"
+          role="status"
+        >
+          <span class="visually-hidden">
+            Consultando API externa...
+          </span>
+        </div>
+
+        <h3>Consultando catálogo externo</h3>
+
+        <p>
+          Obteniendo ofertas de videojuegos desde
+          CheapShark.
+        </p>
+      </div>
+
+      <!-- ERROR O SIN RESULTADOS -->
+
+      <div
+        *ngIf="!cargandoExterna && errorExterna"
+        class="panel estado-api estado-api-error"
+      >
+        <span class="estado-api-icono">⚠</span>
+
+        <h3>No se encontraron datos</h3>
+
+        <p>{{ errorExterna }}</p>
+
+        <div class="estado-api-acciones">
+          <button
+            type="button"
+            class="boton-principal"
+            (click)="cargarCatalogoExterno()"
+          >
+            INTENTAR NUEVAMENTE
+          </button>
+
+          <button
+            type="button"
+            class="boton-secundario"
+            (click)="limpiarBusquedaExterna()"
+          >
+            VER TODAS LAS OFERTAS
+          </button>
+        </div>
+      </div>
+
+      <!-- COMPARACIÓN ACTIVADA DESDE UNA TARJETA EXTERNA -->
+
+      <ng-container
+        *ngIf="obtenerJuegoComparacion() as juegoExterno"
+      >
+        <section
+          id="comparador-api"
+          class="panel comparador-api mb-5"
+        >
+          <div class="comparador-api-encabezado">
+            <div>
+              <p class="mini-etiqueta">
+                COMPARACIÓN DE INFORMACIÓN
+              </p>
+
+              <h2>
+                Catálogo local vs. catálogo externo
+              </h2>
+
+              <p>
+                El videojuego externo ya fue seleccionado.
+                Ahora selecciona un producto del inventario
+                local para comparar la información.
+              </p>
+            </div>
+
+            <button
+              type="button"
+              class="boton-limpiar-comparacion"
+              (click)="limpiarComparacion()"
+            >
+              Cerrar comparación ×
+            </button>
+          </div>
+
+          <!-- SELECTORES DE LOS DOS ORÍGENES -->
+
+          <div class="comparador-selectores">
+
+            <div class="comparador-selector">
+              <label for="juegoExternoSeleccionado">
+                Videojuego seleccionado — API externa
+              </label>
+
+              <select
+                id="juegoExternoSeleccionado"
+                class="form-select"
+                disabled
+              >
+                <option selected>
+                  {{ juegoExterno.title }}
+                  — ${{ juegoExterno.salePrice }}
+                </option>
+              </select>
+
+              <small>
+                Información pública recibida directamente
+                desde CheapShark.
+              </small>
+            </div>
+
+            <div class="comparador-selector">
+              <label for="productoComparacion">
+                Producto para comparar — SOAP
+              </label>
+
+              <select
+                id="productoComparacion"
+                class="form-select"
+                name="productoComparacion"
+                [(ngModel)]="idProductoComparacion"
+              >
+                <option [ngValue]="0">
+                  Selecciona un producto local
+                </option>
+
+                <option
+                  *ngFor="
+                    let producto of productosDisponibles
+                  "
+                  [ngValue]="producto.idProducto"
+                >
+                  {{ producto.nombre }}
+                  — ${{ producto.precio | number:'1.2-2' }}
+                </option>
+              </select>
+
+              <small>
+                Información guardada en SQL Server y
+                consultada mediante el servicio SOAP.
+              </small>
+            </div>
+
+          </div>
+
+          <!-- ESPERA DE SELECCIÓN LOCAL -->
+
+          <div
+            *ngIf="!obtenerProductoComparacion()"
+            class="comparacion-vacia"
+          >
+            <span>⇄</span>
+
+            <div>
+              <strong>
+                Selecciona el producto local
+              </strong>
+
+              <small>
+                El resultado se generará automáticamente.
+              </small>
+            </div>
+          </div>
+
+          <!-- RESULTADO COMPLETO -->
+
+          <ng-container
+            *ngIf="
+              obtenerProductoComparacion()
+                as productoLocal
+            "
+          >
+            <div class="comparacion-contenido">
+
+              <!-- PRODUCTO LOCAL -->
+
+              <article
+                class="
+                  comparacion-tarjeta
+                  comparacion-local
+                "
+              >
+                <div class="comparacion-origen">
+                  <span>01</span>
+                  <strong>CATÁLOGO LOCAL</strong>
+                </div>
+
+                <div class="comparacion-icono-local">
+                  🎮
+                </div>
+
+                <h3>{{ productoLocal.nombre }}</h3>
+
+                <p>{{ productoLocal.descripcion }}</p>
+
+                <div class="comparacion-datos">
+                  <div class="comparacion-fila">
+                    <span>Origen</span>
+                    <strong>SQL Server</strong>
+                  </div>
+
+                  <div class="comparacion-fila">
+                    <span>Servicio</span>
+                    <strong>SOAP</strong>
+                  </div>
+
+                  <div class="comparacion-fila">
+                    <span>Categoría</span>
+
+                    <strong>
+                      {{
+                        obtenerNombreCategoria(
+                          productoLocal.idCategoria
+                        )
+                      }}
+                    </strong>
+                  </div>
+
+                  <div class="comparacion-fila">
+                    <span>Stock disponible</span>
+
+                    <strong>
+                      {{ productoLocal.stock }} unidades
+                    </strong>
+                  </div>
+
+                  <div class="comparacion-fila">
+                    <span>Estado</span>
+
+                    <strong>
+                      {{
+                        productoLocal.estado
+                          ? 'Activo'
+                          : 'Inactivo'
+                      }}
+                    </strong>
+                  </div>
+                </div>
+
+                <div class="comparacion-precio">
+                  <small>Precio local</small>
+
+                  <strong>
+                    {{
+                      productoLocal.precio
+                        | currency:
+                          'USD':
+                          'symbol':
+                          '1.2-2'
+                    }}
+                  </strong>
+                </div>
+              </article>
+
+              <!-- INDICADOR CENTRAL -->
+
+              <div class="comparacion-vs">
+                <span>VS</span>
+                <small>COMPARACIÓN</small>
+              </div>
+
+              <!-- PRODUCTO EXTERNO -->
+
+              <article
+                class="
+                  comparacion-tarjeta
+                  comparacion-externa
+                "
+              >
+                <div class="comparacion-origen">
+                  <span>02</span>
+                  <strong>API EXTERNA</strong>
+                </div>
+
+                <div class="comparacion-imagen-externa">
+                  <img
+                    [src]="juegoExterno.thumb"
+                    [alt]="juegoExterno.title"
+                  >
+                </div>
+
+                <h3>{{ juegoExterno.title }}</h3>
+
+                <p>
+                  Oferta pública obtenida desde el
+                  catálogo internacional de CheapShark.
+                </p>
+
+                <div class="comparacion-datos">
+                  <div class="comparacion-fila">
+                    <span>Origen</span>
+                    <strong>CheapShark</strong>
+                  </div>
+
+                  <div class="comparacion-fila">
+                    <span>Servicio</span>
+                    <strong>REST externo</strong>
+                  </div>
+
+                  <div class="comparacion-fila">
+                    <span>Precio normal</span>
+
+                    <strong>
+                      {{
+                        +juegoExterno.normalPrice
+                          | currency:
+                            'USD':
+                            'symbol':
+                            '1.2-2'
+                      }}
+                    </strong>
+                  </div>
+
+                  <div class="comparacion-fila">
+                    <span>Descuento</span>
+
+                    <strong>
+                      {{
+                        porcentajeDescuento(
+                          juegoExterno
+                        )
+                      }}%
+                    </strong>
+                  </div>
+
+                  <div class="comparacion-fila">
+                    <span>Valoración Steam</span>
+
+                    <strong>
+                      {{
+                        +juegoExterno.steamRatingPercent > 0
+                          ? juegoExterno.steamRatingPercent + '%'
+                          : 'No disponible'
+                      }}
+                    </strong>
+                  </div>
+                </div>
+
+                <div class="comparacion-precio">
+                  <small>Precio de oferta</small>
+
+                  <strong>
+                    {{
+                      +juegoExterno.salePrice
+                        | currency:
+                          'USD':
+                          'symbol':
+                          '1.2-2'
+                    }}
+                  </strong>
+                </div>
+              </article>
+
+            </div>
+
+            <!-- CONCLUSIÓN -->
+
+            <div
+              class="comparacion-resultado"
+              [class.resultado-local]="
+                tipoResultadoComparacion() === 'local'
+              "
+              [class.resultado-externo]="
+                tipoResultadoComparacion() === 'externo'
+              "
+              [class.resultado-igual]="
+                tipoResultadoComparacion() === 'igual'
+              "
+            >
+              <span class="resultado-icono">✓</span>
+
+              <div>
+                <small>
+                  RESULTADO DE LA COMPARACIÓN
+                </small>
+
+                <strong>
+                  {{ resultadoPrecioComparacion() }}
+                </strong>
+
+                <p>
+                  Diferencia:
+                  {{
+                    diferenciaPrecioComparacion()
+                      | currency:
+                        'USD':
+                        'symbol':
+                        '1.2-2'
+                  }}
+                </p>
+              </div>
+
+              <button
+                type="button"
+                class="boton-limpiar-comparacion"
+                (click)="limpiarComparacion()"
+              >
+                Nueva comparación
+              </button>
+            </div>
+
+          </ng-container>
+
+        </section>
+      </ng-container>
+
+      <!-- RESULTADOS EXTERNOS -->
+
+      <div
+        *ngIf="
+          !cargandoExterna &&
+          !errorExterna &&
+          juegosExternos.length > 0
+        "
+      >
+        <div class="resultado-api-cabecera">
+          <div>
+            <p class="mini-etiqueta">
+              RESPUESTA EXTERNA RECIBIDA
+            </p>
+
+            <h3>Ofertas encontradas</h3>
+          </div>
+
+          <span class="contador-api">
+            {{ juegosExternos.length }} RESULTADOS
+          </span>
+        </div>
+
+        <div class="row g-4">
+          <div
+            *ngFor="
+              let juego of juegosExternos;
+              trackBy: identificarJuego
+            "
+            class="col-12 col-md-6 col-xl-4"
+          >
+            <article
+              class="tarjeta-juego-api"
+              [class.juego-comparando]="
+                dealIdComparacion === juego.dealID
+              "
+            >
+
+              <div class="imagen-juego-api">
+                <img
+                  [src]="juego.thumb"
+                  [alt]="juego.title"
+                  loading="lazy"
+                >
+
+                <span
+                  *ngIf="porcentajeDescuento(juego) > 0"
+                  class="descuento-api"
+                >
+                  -{{ porcentajeDescuento(juego) }}%
+                </span>
+
+                <span class="fuente-api">
+                  API EXTERNA
+                </span>
+              </div>
+
+              <div class="contenido-juego-api">
+                <div class="juego-api-superior">
+                  <span class="tienda-api">
+                    STEAM
+                  </span>
+
+                  <span
+                    *ngIf="
+                      juego.metacriticScore &&
+                      +juego.metacriticScore > 0
+                    "
+                    class="metacritic-api"
+                  >
+                    M {{ juego.metacriticScore }}
+                  </span>
+                </div>
+
+                <h3 [title]="juego.title">
+                  {{ juego.title }}
+                </h3>
+
+                <div class="valoracion-api">
+                  <span>★</span>
+
+                  <span *ngIf="juego.steamRatingText">
+                    {{ juego.steamRatingText }}
+                  </span>
+
+                  <span *ngIf="!juego.steamRatingText">
+                    Sin valoración disponible
+                  </span>
+
+                  <small
+                    *ngIf="
+                      juego.steamRatingPercent &&
+                      +juego.steamRatingPercent > 0
+                    "
+                  >
+                    {{ juego.steamRatingPercent }}%
+                  </small>
+                </div>
+
+                <div class="precios-api">
+                  <div>
+                    <small>Precio normal</small>
+
+                    <del>
+                      {{
+                        +juego.normalPrice
+                          | currency:
+                            'USD':
+                            'symbol':
+                            '1.2-2'
+                      }}
+                    </del>
+                  </div>
+
+                  <div class="precio-oferta-api">
+                    <small>Precio oferta</small>
+
+                    <strong>
+                      {{
+                        +juego.salePrice
+                          | currency:
+                            'USD':
+                            'symbol':
+                            '1.2-2'
+                      }}
+                    </strong>
+                  </div>
+                </div>
+
+                <button
+                  type="button"
+                  class="boton-comparar-api"
+                  [class.seleccionado]="
+                    dealIdComparacion === juego.dealID
+                  "
+                  (click)="
+                    seleccionarJuegoComparacion(juego)
+                  "
+                >
+                  {{
+                    dealIdComparacion === juego.dealID
+                      ? 'VIDEOJUEGO SELECCIONADO ✓'
+                      : 'COMPARAR CON CATÁLOGO LOCAL ⇄'
+                  }}
+                </button>
+
+                <a
+                  [href]="obtenerEnlaceOferta(juego)"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="boton-oferta-api"
+                >
+                  VER OFERTA EXTERNA ↗
+                </a>
+              </div>
+
+            </article>
+          </div>
+        </div>
+      </div>
+
+      <!-- FLUJO DE LA API -->
+
+      <div
+        *ngIf="
+          !cargandoExterna &&
+          juegosExternos.length > 0
+        "
+        class="panel flujo-api mt-5"
+      >
+        <div class="flujo-api-paso">
+          <span>01</span>
+          <strong>Angular</strong>
+          <small>Solicita el catálogo</small>
+        </div>
+
+        <div class="flujo-api-flecha">→</div>
+
+        <div class="flujo-api-paso">
+          <span>02</span>
+          <strong>CheapShark API</strong>
+          <small>Procesa la consulta GET</small>
+        </div>
+
+        <div class="flujo-api-flecha">→</div>
+
+        <div class="flujo-api-paso">
+          <span>03</span>
+          <strong>Respuesta JSON</strong>
+          <small>Muestra datos externos</small>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <footer class="footer-matrix">
+    <div class="container">
+      <span>GAMECORE SYSTEM</span>
+      <p>
+        Angular · SOAP · REST · API pública · SQL Server
+      </p>
+    </div>
+  </footer>
+
+</div>

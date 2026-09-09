@@ -1,0 +1,492 @@
+{
+  "info": {
+    "_postman_id": "1007a0de-222d-43d9-ba8b-a606ff1374c0",
+    "name": "VideojuegosSOAP",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "57563921",
+    "_collection_link": "https://go.postman.co/collection/57563921-1007a0de-222d-43d9-ba8b-a606ff1374c0?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "REST - Movimientos de inventario",
+      "item": [
+        {
+          "name": "Obtener lista de movimientos",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5182/api/MovimientosInventario",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5182",
+              "path": [
+                "api",
+                "MovimientosInventario"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Agregar movimiento por entrada",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"idProducto\": 10,\r\n  \"cantidad\": 5,\r\n  \"observacion\": \"Entrada de prueba de inventario\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5182/api/MovimientosInventario/entrada",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5182",
+              "path": [
+                "api",
+                "MovimientosInventario",
+                "entrada"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Agregar movimiento por salida",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"idProducto\": 10,\r\n  \"cantidad\": 5,\r\n  \"observacion\": \"Salida de prueba de inventario\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5182/api/MovimientosInventario/salida",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5182",
+              "path": [
+                "api",
+                "MovimientosInventario",
+                "salida"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Obtener movimiento por ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5182/api/MovimientosInventario/",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5182",
+              "path": [
+                "api",
+                "MovimientosInventario",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Guardar un registro",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"idProducto\": 10,\r\n  \"tipoMovimiento\": \"ENTRADA\",\r\n  \"cantidad\": 3,\r\n  \"observacion\": \"Entrada registrada mediante Guardar un registro\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5182/api/MovimientosInventario",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5182",
+              "path": [
+                "api",
+                "MovimientosInventario"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Actualizar un registro",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"idProducto\": 10,\r\n  \"tipoMovimiento\": \"ENTRADA\",\r\n  \"cantidad\": 5,\r\n  \"observacion\": \"Cantidad corregida de 3 a 5 unidades\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5182/api/MovimientosInventario/3",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5182",
+              "path": [
+                "api",
+                "MovimientosInventario",
+                "3"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Borrar un registro",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5182/api/MovimientosInventario/3",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5182",
+              "path": [
+                "api",
+                "MovimientosInventario",
+                "3"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "ObtenerCategorías",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "text/xml;charset=utf-8",
+            "type": "text"
+          },
+          {
+            "key": "SOAPAction",
+            "value": "\"http://tempuri.org/IProductoService/ObtenerCategorias\"",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<soap:Envelope\r\n    xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\"\r\n    xmlns:tem=\"http://tempuri.org/\">\r\n    <soap:Header/>\r\n    <soap:Body>\r\n        <tem:ObtenerCategorias/>\r\n    </soap:Body>\r\n</soap:Envelope>",
+          "options": {
+            "raw": {
+              "language": "xml"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5171/ProductoService.svc",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5171",
+          "path": [
+            "ProductoService.svc"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "ObtenerProductos",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "text/xml;charset=utf-8",
+            "type": "text"
+          },
+          {
+            "key": "SOAPAction",
+            "value": "\"http://tempuri.org/IProductoService/ObtenerProductos\"",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<soap:Envelope\r\n    xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\"\r\n    xmlns:tem=\"http://tempuri.org/\">\r\n    <soap:Header/>\r\n    <soap:Body>\r\n        <tem:ObtenerProductos/>\r\n    </soap:Body>\r\n</soap:Envelope>",
+          "options": {
+            "raw": {
+              "language": "xml"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5171/ProductoService.svc",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5171",
+          "path": [
+            "ProductoService.svc"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "ObtenerProducto por ID",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "text/xml;charset=utf-8",
+            "type": "text"
+          },
+          {
+            "key": "SOAPAction",
+            "value": "\"http://tempuri.org/IProductoService/ObtenerProducto\"",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<soap:Envelope\r\n    xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\"\r\n    xmlns:tem=\"http://tempuri.org/\">\r\n    <soap:Header/>\r\n    <soap:Body>\r\n        <tem:ObtenerProducto>\r\n            <tem:id>1</tem:id>\r\n        </tem:ObtenerProducto>\r\n    </soap:Body>\r\n</soap:Envelope>",
+          "options": {
+            "raw": {
+              "language": "xml"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5171/ProductoService.svc",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5171",
+          "path": [
+            "ProductoService.svc"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "AgregarProducto",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "text/xml;charset=utf-8",
+            "type": "text"
+          },
+          {
+            "key": "SOAPAction",
+            "value": "\"http://tempuri.org/IProductoService/AgregarProducto\"",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<soap:Envelope\r\n    xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\"\r\n    xmlns:tem=\"http://tempuri.org/\"\r\n    xmlns:pro=\"http://schemas.datacontract.org/2004/07/VideojuegosSOAP.Models\">\r\n    <soap:Header/>\r\n    <soap:Body>\r\n        <tem:AgregarProducto>\r\n            <tem:producto>\r\n                <pro:Descripcion>Videojuego de acción y mundo abierto futurista</pro:Descripcion>\r\n                <pro:Estado>true</pro:Estado>\r\n                <pro:IdCategoria>1</pro:IdCategoria>\r\n                <pro:IdProducto>0</pro:IdProducto>\r\n                <pro:Nombre>Cyberpunk 2077</pro:Nombre>\r\n                <pro:Precio>44.99</pro:Precio>\r\n                <pro:Stock>25</pro:Stock>\r\n            </tem:producto>\r\n        </tem:AgregarProducto>\r\n    </soap:Body>\r\n</soap:Envelope>",
+          "options": {
+            "raw": {
+              "language": "xml"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5171/ProductoService.svc",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5171",
+          "path": [
+            "ProductoService.svc"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "ActualizarProducto",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "text/xml;charset=utf-8",
+            "type": "text"
+          },
+          {
+            "key": "SOAPAction",
+            "value": "\"http://tempuri.org/IProductoService/ActualizarProducto\"",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<soap:Envelope\r\n    xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\"\r\n    xmlns:tem=\"http://tempuri.org/\"\r\n    xmlns:pro=\"http://schemas.datacontract.org/2004/07/VideojuegosSOAP.Models\">\r\n    <soap:Header/>\r\n    <soap:Body>\r\n        <tem:ActualizarProducto>\r\n            <tem:producto>\r\n                <pro:Descripcion>Edición actualizada del videojuego futurista</pro:Descripcion>\r\n                <pro:Estado>true</pro:Estado>\r\n                <pro:IdCategoria>1</pro:IdCategoria>\r\n                <pro:IdProducto>7</pro:IdProducto>\r\n                <pro:Nombre>Cyberpunk 2077 Ultimate</pro:Nombre>\r\n                <pro:Precio>49.99</pro:Precio>\r\n                <pro:Stock>30</pro:Stock>\r\n            </tem:producto>\r\n        </tem:ActualizarProducto>\r\n    </soap:Body>\r\n</soap:Envelope>"
+        },
+        "url": {
+          "raw": "http://localhost:5171/ProductoService.svc",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5171",
+          "path": [
+            "ProductoService.svc"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "EliminarProducto",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "text/xml;charset=utf-8",
+            "type": "text"
+          },
+          {
+            "key": "SOAPAction",
+            "value": "\"http://tempuri.org/IProductoService/EliminarProducto\"",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<soap:Envelope\r\n    xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\"\r\n    xmlns:tem=\"http://tempuri.org/\">\r\n    <soap:Header/>\r\n    <soap:Body>\r\n        <tem:EliminarProducto>\r\n            <tem:id>8</tem:id>\r\n        </tem:EliminarProducto>\r\n    </soap:Body>\r\n</soap:Envelope>"
+        },
+        "url": {
+          "raw": "http://localhost:5171/ProductoService.svc",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5171",
+          "path": [
+            "ProductoService.svc"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "ObtenerProductos por Precio",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "text/xml;charset=utf-8",
+            "type": "text"
+          },
+          {
+            "key": "SOAPAction",
+            "value": "\"http://tempuri.org/IProductoService/ObtenerProductosPorPrecio\"",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<soap:Envelope\r\n    xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\"\r\n    xmlns:tem=\"http://tempuri.org/\">\r\n    <soap:Header/>\r\n    <soap:Body>\r\n        <tem:ObtenerProductosPorPrecio>\r\n            <tem:precioMinimo>40.00</tem:precioMinimo>\r\n            <tem:precioMaximo>60.00</tem:precioMaximo>\r\n        </tem:ObtenerProductosPorPrecio>\r\n    </soap:Body>\r\n</soap:Envelope>"
+        },
+        "url": {
+          "raw": "http://localhost:5171/ProductoService.svc",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5171",
+          "path": [
+            "ProductoService.svc"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "ObtenerProductos por Categoría",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "text/xml;charset=utf-8",
+            "type": "text"
+          },
+          {
+            "key": "SOAPAction",
+            "value": "\"http://tempuri.org/IProductoService/ObtenerProductosPorCategoria\"",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<soap:Envelope\r\n    xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\"\r\n    xmlns:tem=\"http://tempuri.org/\">\r\n    <soap:Header/>\r\n    <soap:Body>\r\n        <tem:ObtenerProductosPorCategoria>\r\n            <tem:idCategoria>2</tem:idCategoria>\r\n        </tem:ObtenerProductosPorCategoria>\r\n    </soap:Body>\r\n</soap:Envelope>"
+        },
+        "url": {
+          "raw": "http://localhost:5171/ProductoService.svc",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5171",
+          "path": [
+            "ProductoService.svc"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
